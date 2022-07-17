@@ -57,6 +57,7 @@
 			</div>
 		</div>
 		<!--span.chat*8{$}-->
+	<div class="chats-align">
 		<div class="chats">
 			<span class="chat">
 				<img src="{{ url_for('static',filename='img/bingus.jpg')}}" alt="" class="user-icon">
@@ -170,6 +171,7 @@
 			</span>
 		</div>
 	</div>
+	</div>
 
 	<div class="content-wrapper">
 		<div class="user-wrapper">
@@ -188,7 +190,7 @@
 		</div>
 
 		<div class="type">
-			<form id="broadcast" method="POST" action='#'>
+			<form id="broadcast" method="POST" action='#' class="messageform">
 				<input type="text" name="broadcast_data" id="broadcast_data" placeholder="Message" class="user-type">
 				<label for="submit" class="btn"><i class='uil uil-message' id='send'></i></label>
 				<input id="submit" type="submit" hidden />
@@ -198,6 +200,13 @@
 				<input type="text" name="broadcast_data" id="broadcast_data" >
 				
 			</form>-->	
+		</div>
+	</div>
+
+	<div class="settings-wrapper">
+		<div class="settings-header">
+			<h2 style=" font-size: xx-large;">Settings</h2>
+			
 		</div>
 	</div>
 </body>

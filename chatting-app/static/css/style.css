@@ -1,6 +1,18 @@
 /*h1{
     color:rgb(150, 111, 255);
 }*/
+
+/*variables*/
+:root {
+    --main-color: #23232A;
+    --text-color: #fff;
+    --second-color: #2D2D38;
+    --chat-hover-color: #45454D;
+    --third-color: #5E5E66;
+    --scrl-track-color: #F1F1F1;
+    --scrl-thumb-color-hvr: #4D4D58;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -9,9 +21,9 @@
 
 body {
     font-family: 'Red Hat Display', sans-serif;
-    color: #fff;
-    background: #23232A;
-    height:100%;
+    color: var(--text-color);
+    background: var(--main-color);
+    height: 100%;
     width: 100%;
     display: flex;
     overflow: hidden;
@@ -19,7 +31,7 @@ body {
 
 .chats-wrapper {
     width: 20%;
-    background: #23232A;
+    background: var(--main-color);
     padding: 10px;
     height: 100%;
 }
@@ -30,11 +42,11 @@ body {
     margin: 0 0 5px 0;
     border-radius: 8px;
     margin-bottom: 30px;
-    background: #2D2D38;
+    background: var(--second-color);
 }
 
 .chat{
-    background: #2D2D38;
+    background: var(--second-color);
     height: 60px;
     display: flex;
     margin: 0 0 8px 0;
@@ -43,7 +55,7 @@ body {
 }
 
 .chat:hover {
-    background: #45454D;
+    background: var(--chat-hover-color);
     cursor: pointer;
 }
 
@@ -59,12 +71,12 @@ body {
 .search {
     border: none;
     border-radius: 16px;
-    background: #5E5E66;
+    background: var(--third-color);
     height: 36px;
     width: 80%;
     padding: 0px 8px 0px 8px;
     font-size: medium;
-    color: #fff;
+    color: var(--text-color);
 }
 
 .user-icon {
@@ -82,10 +94,15 @@ body {
     color: rgba(255,255,255,.6);
 }
 
+.chats-align {
+
+}
+
 .chats {
-    height: 800px;
+    height: 770px;
     overflow-y: scroll;
     padding-right: 6px;
+    border-radius: 10px;
 }
 /* width */
 ::-webkit-scrollbar {
@@ -96,19 +113,19 @@ body {
   /* Track */
   ::-webkit-scrollbar-track {
     border-radius: 10px;
-    background: #f1f1f1;
+    background: var(--scrl-track-color);
   }
   
   /* Handle */
   ::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    background: #5E5E66;
+    background: var(--third-color);
   }
   
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
     border-radius: 10px;
-    background: #4D4D58;
+    background: var(--scrl-thumb-color-hvr);
   }
 
 
@@ -128,7 +145,7 @@ body {
     margin: 10px;
     padding: 12px;
     border-radius: 8px;
-    background: #2D2D38;
+    background: var(--second-color);
     display: flex;
 }
 
@@ -162,15 +179,16 @@ body {
     margin: 10px;
     padding: 12px;
     border-radius: 8px;
-    background: #2D2D38;
+    background: var(--second-color);
     overflow-y: auto;
     padding-right: 6px;
+    height: 100%;
 }
 
 .message {
     display: flex;
     flex-direction: row;
-    border-bottom: #5E5E66 2px solid;
+    border-bottom: var(--third-color) 2px solid;
     padding-bottom: 14px;
     margin-bottom: 14px;
 }
@@ -207,25 +225,35 @@ body {
     margin: 10px;
     padding: 12px;
     border-radius: 8px;
-    background: #2D2D38;
+    background: var(--second-color);
     display: flex;
     flex-direction: row;
     /*height: 80px;*/
 }
 
+.messageform {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+   
+}
+
 .user-type {
     border: none;
     border-radius: 16px;
-    background: #5E5E66;
+    background: var(--third-color);
     height: 36px;
     padding: 0px 16px 0px 16px;
     font-size: medium;
-    color: #fff;
-    width: 100%;
+    color: var(--text-color);
+    width: 96%; 
 }
 
+
+
 #send {
-    margin-left: 4px;
+    margin-top: 6px;
     font-size: 1.3rem;
     margin: auto;
 }
@@ -236,4 +264,20 @@ body {
 
 input:focus {
     outline: none;
+}
+
+.settings-wrapper {
+    width: 20%;
+    background: var(--main-color);
+    padding: 10px;
+    height: 100%;
+}
+
+.settings-header {
+    text-align: center;
+    padding: 15.5px 0px;
+    margin: 0 0 5px 0;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    background: var(--second-color);
 }
