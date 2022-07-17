@@ -13,6 +13,38 @@
 	<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;600;700;800;900&display=swap"
 		rel="stylesheet">
 	<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+	<script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.js"></script>
+    <script type="text/javascript" charset="utf-8">
+			$(document).ready(function() {
+
+			namespace = '/';
+			var socket = io(namespace);
+
+			socket.on('connect', function() {
+				socket.emit('my_event', {data: 'connected to the SocketServer...'});
+			});
+
+			socket.on('my_response', function(msg, cb) {
+				$('#log').append('<div class="message"> <img src="{{ url_for('static',filename='img/bingus.jpg')}}" alt="" class="user-chat-icon"> <div> <div> <span class="name">Bingus</span> <span class="date">10:24</span> </div> <span class="text">' + msg.data.trim() + '</span> </div> </div>').html();
+				//$('#log').append('<br>' + $('<div/>').text('logs #' + msg.count + ': ' + msg.data).html());
+				if (cb)
+					cb();
+			});
+			$('form#emit').submit(function(event) {
+				socket.emit('my_event', {data: $('#emit_data').val()});
+				return false;
+			});
+			$('form#broadcast').submit(function(event) {
+				socket.emit('my_broadcast_event', {data: $('#broadcast_data').val()});
+				return false;
+			});
+			$('form#disconnect').submit(function(event) {
+				socket.emit('disconnect_request');
+				return false;
+			});
+			});
+    </script>
 </head>
 
 <body>
@@ -149,160 +181,25 @@
 			</div>
 		</div>
 
-		<div class="messages">
-			<div class="message">
-				<img src="{{ url_for('static',filename='img/beluga-pfp.PNG')}}" alt="" class="user-chat-icon">
-				<div>
-					<div>
-						<span class="name">Beluga</span>
-						<span class="date">10:24</span>
-					</div>	
-					<span class="text">
-						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi, quod
-						voluptatum. Ex velit qui consequuntur laboriosam quod ab nulla dignissimos molestias iusto
-						temporibus praesentium, iure recusandae, quo voluptatum sint sed.
-					</span>
-				</div>
-			</div>
+		<div id="log" class="messages">
 
-			<div class="message">
-				<img src="{{ url_for('static',filename='img/bingus.jpg')}}"" alt="" class="user-chat-icon">
-				<div>
-					<div>
-						<span class="name">Bingus</span>
-						<span class="date">10:24</span>
-					</div>	
-					<span class="text">
-						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi, quod
-						voluptatum. Ex velit qui consequuntur laboriosam quod ab nulla dignissimos molestias iusto
-						temporibus praesentium, iure recusandae, quo voluptatum sint sed.
-					</span>
-				</div>
-			</div>
-
-			<div class="message">
-				<img src="{{ url_for('static',filename='img/beluga-pfp.PNG')}}" alt="" class="user-chat-icon">
-				<div>
-					<div>
-						<span class="name">Beluga</span>
-						<span class="date">10:24</span>
-					</div>	
-					<span class="text">
-						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi, quod
-						voluptatum. Ex velit qui consequuntur laboriosam quod ab nulla dignissimos molestias iusto
-						temporibus praesentium, iure recusandae, quo voluptatum sint sed.
-					</span>
-				</div>
-			</div>
-
-			<div class="message">
-				<img src="{{ url_for('static',filename='img/bingus.jpg')}}" alt="" class="user-chat-icon">
-				<div>
-					<div>
-						<span class="name">Bingus</span>
-						<span class="date">10:24</span>
-					</div>	
-					<span class="text">
-						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi, quod
-						voluptatum. Ex velit qui consequuntur laboriosam quod ab nulla dignissimos molestias iusto
-						temporibus praesentium, iure recusandae, quo voluptatum sint sed.
-					</span>
-				</div>
-			</div>
-
-			<div class="message">
-				<img src="{{ url_for('static',filename='img/beluga-pfp.PNG')}}" alt="" class="user-chat-icon">
-				<div>
-					<div>
-						<span class="name">Beluga</span>
-						<span class="date">10:24</span>
-					</div>	
-					<span class="text">
-						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi, quod
-						voluptatum. Ex velit qui consequuntur laboriosam quod ab nulla dignissimos molestias iusto
-						temporibus praesentium, iure recusandae, quo voluptatum sint sed.
-					</span>
-				</div>
-			</div>
-
-			<div class="message">
-				<img src="{{ url_for('static',filename='img/bingus.jpg')}}" alt="" class="user-chat-icon">
-				<div>
-					<div>
-						<span class="name">Bingus</span>
-						<span class="date">10:24</span>
-					</div>	
-					<span class="text">
-						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi, quod
-						voluptatum. Ex velit qui consequuntur laboriosam quod ab nulla dignissimos molestias iusto
-						temporibus praesentium, iure recusandae, quo voluptatum sint sed.
-					</span>
-				</div>
-			</div>
-
-			<div class="message">
-				<img src="{{ url_for('static',filename='img/beluga-pfp.PNG')}}" alt="" class="user-chat-icon">
-				<div>
-					<div>
-						<span class="name">Beluga</span>
-						<span class="date">10:24</span>
-					</div>	
-					<span class="text">
-						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi, quod
-						voluptatum. Ex velit qui consequuntur laboriosam quod ab nulla dignissimos molestias iusto
-						temporibus praesentium, iure recusandae, quo voluptatum sint sed.
-					</span>
-				</div>
-			</div>
-
-			<div class="message">
-				<img src="{{ url_for('static',filename='img/bingus.jpg')}}" alt="" class="user-chat-icon">
-				<div>
-					<div>
-						<span class="name">Bingus</span>
-						<span class="date">10:24</span>
-					</div>	
-					<span class="text">
-						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi, quod
-						voluptatum. Ex velit qui consequuntur laboriosam quod ab nulla dignissimos molestias iusto
-						temporibus praesentium, iure recusandae, quo voluptatum sint sed.
-					</span>
-				</div>
-			</div>
-
-			<div class="message">
-				<img src="{{ url_for('static',filename='img/beluga-pfp.PNG')}}" alt="" class="user-chat-icon">
-				<div>
-					<div>
-						<span class="name">Beluga</span>
-						<span class="date">10:24</span>
-					</div>	
-					<span class="text">
-						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi, quod
-						voluptatum. Ex velit qui consequuntur laboriosam quod ab nulla dignissimos molestias iusto
-						temporibus praesentium, iure recusandae, quo voluptatum sint sed.
-					</span>
-				</div>
-			</div>
 
 
 		</div>
 
 		<div class="type">
-			<form action="" method="POST"></form>
-			<input type="text" class="user-type">
-			<input type="submit" placeholder="<i class='uil uil-message' id='send'></i>">
+			<form id="broadcast" method="POST" action='#'>
+				<input type="text" name="broadcast_data" id="broadcast_data" placeholder="Message" class="user-type">
+				<label for="submit" class="btn"><i class='uil uil-message' id='send'></i></label>
+				<input id="submit" type="submit" hidden />
+			</form>
+		
+			<!--<form id="broadcast" action="#" method="POST">
+				<input type="text" name="broadcast_data" id="broadcast_data" >
+				
+			</form>-->	
 		</div>
 	</div>
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.1/socket.io.js"></script>
-	<script type="text/javascript">
-	     var socket = io();
-    socket.on('connect', function() {
-        socket.emit('my event', {data: 'I\'m connected!'});
-    });
-	</script>
 </body>
 
 </html>

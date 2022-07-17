@@ -15,7 +15,7 @@
             });
 
             socket.on('my_response', function(msg, cb) {
-                $('#log').append('<br>' + $('<div/>').text('logs #' + msg.count + ': ' + msg.data).html());
+                $('#log').append('<div class="message"> <img src="{{ url_for(\'static\',filename=\'img/bingus.jpg\')}}" alt="" class="user-chat-icon"> <div> <div> <span class="name">Bingus</span> <span class="date">10:24</span> </div> <span class="text">' + msg.data + '</span> </div> </div>').html());
                 if (cb)
                     cb();
             });
