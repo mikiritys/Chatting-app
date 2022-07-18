@@ -1,7 +1,7 @@
 from flask import Flask, render_template, session
 from flask_socketio import SocketIO, emit, disconnect
 from threading import Lock
-#from flask_ngrok import run_with_ngrok
+from flask_ngrok import run_with_ngrok
 
 
 async_mode = "threading"
@@ -10,7 +10,10 @@ app.config['SECRET_KEY'] = 'secret!'
 socket_ = SocketIO(app, async_mode=async_mode)
 thread = None
 thread_lock = Lock()
-#run_with_ngrok(app)
+app.config['ENV'] = 'development'
+app.config['DEBUG'] = True
+app.config['TESTING'] = True
+run_with_ngrok(app)
 
 
 @app.route('/')
@@ -45,4 +48,5 @@ def disconnect_request():
 
 
 if __name__ == '__main__':
-    socket_.run(app, debug=True) 
+    app.run()
+    # socket_.run(app, debug=True) 
