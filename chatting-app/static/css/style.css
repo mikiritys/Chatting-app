@@ -94,9 +94,6 @@ body {
     color: rgba(255,255,255,.6);
 }
 
-.chats-align {
-
-}
 
 .chats {
     height: 770px;
@@ -265,6 +262,8 @@ body {
 input:focus {
     outline: none;
 }
+
+/*settings*/
 
 .settings-wrapper {
     width: 20%;
