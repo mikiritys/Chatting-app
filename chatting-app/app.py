@@ -1,7 +1,7 @@
 from flask import Flask, render_template, session
 from flask_socketio import SocketIO, emit, disconnect
 from threading import Lock
-from flask_ngrok import run_with_ngrok
+#from flask_ngrok import run_with_ngrok
 
 
 async_mode = "threading"
@@ -13,7 +13,7 @@ thread_lock = Lock()
 app.config['ENV'] = 'development'
 app.config['DEBUG'] = True
 app.config['TESTING'] = True
-run_with_ngrok(app)
+#run_with_ngrok(app)
 
 
 @app.route('/')
