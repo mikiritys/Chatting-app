@@ -22,7 +22,7 @@
 			var socket = io(namespace);
 
 			socket.on('connect', function() {
-				socket.emit('my_event', {data: 'connected to the SocketServer...'});
+				socket.emit('connecte', {data: 'connected to the SocketServer...'});
 			});
 
 			socket.on('my_response', function(msg, cb) {
